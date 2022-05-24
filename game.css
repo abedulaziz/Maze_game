@@ -137,3 +137,12 @@ neighboring elements.  Necessary to avoid giving ids to the boundary divs
 	display: flex;
 	justify-content: space-around;
 }
+
+
+.restart_butt {
+	width: 500px;
+	margin: auto;
+	display: flex;
+	justify-content: center;
+	padding: 20px;
+}

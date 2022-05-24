@@ -13,15 +13,12 @@ window.onload = function () {
     sec = document.getElementById("sec"),
     milli_sec = document.getElementById("milli-sec");
 
+  var restart = document.getElementById("restartGame");
+
   var stopWatch;
   var best = "0:0.0",
       isBestStarted = false;
-  // var stopWatch = setInterval(startMilli, 100);
 
-  // whenever the user hover on the start button the background color of the boundaries will be "#eeeeee"
-  // start.addEventListener("mouseover", () => boundColorChange("#eeeeee"))
-
-  // when start button clicked, cursor movements will be followed inside "#game" div only
   start.addEventListener("mousemove", () => {
     if (!stopWatch) {
       stopWatch = setInterval(startMilli, 100);
@@ -29,7 +26,19 @@ window.onload = function () {
     gameArea.addEventListener("mousemove", followCursor);
   });
 
-  // call back functions
+  restart.addEventListener("click", () => {
+    clearInterval(stopWatch);
+    stopWatch = undefined;
+    min.innerText = 0
+    sec.innerText = 0
+    milli_sec.innerText = 0
+    document.querySelector(".time_stats .scores .best-score span").innerText = "0:0.0"
+    document.querySelector(".time_stats .scores .last-score span").innerText = "0:0.0"
+    score = 0
+    scoreUpdate.innerHTML = "Your score: " + score
+    boundColorChange("#eeeeee");
+  })
+
 
   // function behave according to each move of the cursor
   function followCursor(e) {
